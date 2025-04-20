@@ -1,9 +1,7 @@
-import json
+ import json
 import random
-from datetime import datetime
 
 ACCOUNTS_FILE = "microworkers_accounts.json"
-LOG_FILE = "microworkers_earnings_log.json"
 
 def load_accounts():
     with open(ACCOUNTS_FILE, "r", encoding="utf-8") as f:
@@ -12,22 +10,10 @@ def load_accounts():
 def perform_tasks(account):
     email = account.get("email")
     proxy = account.get("proxy")
+    # Тут буде логіка підключення до Microworkers через проксі
+    # та автоматичного виконання завдань.
     print(f"[+] Виконано завдання для {email} через {proxy}")
-    earned = round(random.uniform(0.1, 1.5), 2)  # Мокаємо заробіток
-    log_earning(email, earned)
-    return earned
-
-def log_earning(email, amount):
-    entry = {
-        "timestamp": datetime.utcnow().isoformat(),
-        "account": email,
-        "earned_usd": amount
-    }
-    try:
-        with open(LOG_FILE, "a", encoding="utf-8") as f:
-            f.write(json.dumps(entry) + "\n")
-    except Exception as e:
-        print(f"[ERROR] Не вдалося записати лог: {e}")
+    return round(random.uniform(0.1, 1.5), 2)  # Мокаємо заробіток
 
 def main():
     print("--- MICROWORKERS FARM STARTED ---")
