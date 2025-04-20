@@ -2,7 +2,7 @@ import json
 import random
 from datetime import datetime
 
-ACCOUNTS_FILE = "accounts_microworkers.json"
+ACCOUNTS_FILE = "microworkers_accounts.json"
 LOG_FILE = "microworkers_earnings_log.json"
 
 def load_accounts():
